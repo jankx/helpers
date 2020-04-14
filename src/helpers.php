@@ -13,3 +13,13 @@ if (!function_exists('array_get')) {
         return $value;
     }
 }
+
+if (!function_exists('jankx_is_mobile_template')) {
+    function jankx_is_mobile_template()
+    {
+        return apply_filters(
+            'jankx_is_mobile_template',
+            wp_is_mobile()
+        );
+    }
+}
