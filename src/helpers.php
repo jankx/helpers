@@ -22,3 +22,17 @@ if (!function_exists('jankx_is_mobile_template')) {
         );
     }
 }
+
+if (!function_exists('jankx_generate_html_attributes')) {
+    function jankx_generate_html_attributes($attributes)
+    {
+        if (!is_array($attributes)) {
+            return '';
+        }
+        $attributesStr = '';
+        foreach ($attributes as $attribute => $value) {
+            $attributesStr .= sprintf('%s="%s" ', $attribute, $value);
+        }
+        return rtrim($attributesStr);
+    }
+}
