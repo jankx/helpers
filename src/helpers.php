@@ -16,9 +16,15 @@ if (!function_exists('array_get')) {
 if (!function_exists('jankx_is_mobile_template')) {
     function jankx_is_mobile_template()
     {
+        if (isset($_COOKIE['view'])) {
+            $isMobile = array_get($_COOKIE, 'view', 'desktop') === 'mobile';
+        } else {
+            $isMobile = wp_is_mobile();
+        }
+
         return apply_filters(
             'jankx_is_mobile_template',
-            wp_is_mobile()
+            $isMobile
         );
     }
 }
