@@ -97,7 +97,7 @@ if (!function_exists('jankx_placeholder_image')) {
             '<img src="https://placeholder.pics/svg/%1$s/FF7247-FF3876/FFFFFF/%2$s" alt="%3$s" />',
             implode('x', array_values($imageSize)),
             strtoupper($siteName),
-            $$placeholder,
+            $placeholder,
         );
     }
 }
