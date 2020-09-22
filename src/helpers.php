@@ -93,12 +93,16 @@ if (!function_exists('jankx_placeholder_image')) {
         $imageSize = jankx_get_image_numeric_size($imageSize);
         $siteName  = urlencode(get_bloginfo('name'));
 
-        return sprintf(
-            '<img src="https://placeholder.pics/svg/%1$s/FF7247-FF3876/FFFFFF/%2$s" alt="%3$s" />',
-            implode('x', array_values($imageSize)),
-            strtoupper($siteName),
-            $placeholder,
-        );
+        return call_user_func_array('sprintf', apply_filters(
+            'jankx_placeholder_image_args',
+            array(
+                '<img src="https://placeskull.com/%1$s/%2$s/%3$d" alt="%3$s" />',
+                implode('/', array_values($imageSize)),
+                '4a90e2',
+                40,
+                $siteName
+            )
+        ));
     }
 }
 
