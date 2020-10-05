@@ -120,3 +120,10 @@ if (!function_exists('jankx_the_post_thumbnail')) {
         }
     }
 }
+
+if (!function_exists('jankx_template_has_footer')) {
+    function jankx_template_has_footer()
+    {
+        return apply_filters('jankx_template_has_footer', true);
+    }
+}
