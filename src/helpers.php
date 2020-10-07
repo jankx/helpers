@@ -110,14 +110,21 @@ if (!function_exists('jankx_placeholder_image')) {
     }
 }
 
+if (!function_exists('jankx_get_post_thumbnail')) {
+    function jankx_get_post_thumbnail($size = 'thumbnail', $attr = array(), $post = null)
+    {
+        if (has_post_thumbnail($post)) {
+            return get_the_post_thumbnail($post, $size, $attr);
+        } else {
+            return jankx_placeholder_image($size);
+        }
+    }
+}
+
 if (!function_exists('jankx_the_post_thumbnail')) {
     function jankx_the_post_thumbnail($size = 'thumbnail', $attr = array(), $post = null)
     {
-        if (has_post_thumbnail($post)) {
-            echo get_the_post_thumbnail($post, $size, $attr);
-        } else {
-            echo jankx_placeholder_image($size);
-        }
+        echo jankx_get_post_thumbnail($size, $attr, $post);
     }
 }
 
