@@ -100,7 +100,7 @@ if (!function_exists('jankx_placeholder_image')) {
         return call_user_func_array('sprintf', apply_filters(
             'jankx_placeholder_image_args',
             array(
-                '<img src="https://placeskull.com/%1$s/%2$s/%3$d" alt="%3$s" />',
+                '<img src="https://placeskull.com/%1$s/%2$s/%3$d" alt="%4$s" />',
                 implode('/', array_values($imageSize)),
                 '4a90e2',
                 40,
