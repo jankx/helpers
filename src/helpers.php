@@ -14,20 +14,23 @@ if (!function_exists('array_get')) {
 }
 
 if (!function_exists('jankx_get_device_detector')) {
-    global $detector;
-    if (is_null($detector)) {
-        // Init Mobile Detect Library 2.8.34
-        $detector = new Mobile_Detect();
-    }
-    if (class_exists(Jankx::class)) {
-        // Create Jankx::device() method
-        $jankxInstance = Jankx::instance();
-        $jankxInstance->device = function () use ($detector) {
-            return $detector;
-        };
-    }
+    function jankx_get_device_detector()
+    {
+        global $detector;
+        if (is_null($detector)) {
+            // Init Mobile Detect Library 2.8.34
+            $detector = new Mobile_Detect();
+        }
+        if (class_exists(Jankx::class)) {
+            // Create Jankx::device() method
+            $jankxInstance = Jankx::instance();
+            $jankxInstance->device = function () use ($detector) {
+                return $detector;
+            };
+        }
 
-    return $detector;
+        return $detector;
+    }
 }
 
 if (!function_exists('jankx_is_mobile')) {
