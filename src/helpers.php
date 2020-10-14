@@ -13,13 +13,27 @@ if (!function_exists('array_get')) {
     }
 }
 
+if (!function_exists('jankx_get_device_detector')) {
+    if (!class_exists(Jankx::class) || !($detector = Jankx::device())) {
+        $detector = new Mobile_Detect();
+    }
+    return $detector;
+}
+
+if (!function_exists('jankx_is_mobile')) {
+    function jankx_is_mobile()
+    {
+        return jankx_get_device_detector()->isMobile();
+    }
+}
+
 if (!function_exists('jankx_is_mobile_template')) {
     function jankx_is_mobile_template()
     {
         if (isset($_COOKIE['view'])) {
             $isMobile = array_get($_COOKIE, 'view', 'desktop') === 'mobile';
         } else {
-            $isMobile = wp_is_mobile();
+            $isMobile = jankx_is_mobile();
         }
 
         return apply_filters(

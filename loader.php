@@ -12,6 +12,10 @@ if (function_exists('jankx_is_mobile_template')) {
     return;
 }
 
+if (!class_exists('Mobile_Detect')) {
+	require_once dirname(__FILE__) . '/src/Mobile_Detect.php';
+}
+
 // Load WordPress shim to compatibility with all WordPress versions
 require_once dirname(__FILE__) . '/src/shims.php';
 
