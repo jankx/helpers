@@ -122,7 +122,12 @@ if (!function_exists('jankx_placeholder_image')) {
     function jankx_placeholder_image($imageSize, $placeholder = '')
     {
         $imageSize = jankx_get_image_numeric_size($imageSize);
-        $siteName  = urlencode(get_bloginfo('name'));
+        if (empty($imageSize) && in_array($imageSize, array('medium_large'))) {
+            $imageSize = jankx_get_image_numeric_size('medium');
+        } else {
+            $imageSize = array(150, 150);
+        }
+        $siteName = urlencode(get_bloginfo('name'));
 
         return call_user_func_array('sprintf', apply_filters(
             'jankx_placeholder_image_args',
