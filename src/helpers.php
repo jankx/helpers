@@ -128,7 +128,6 @@ if (!function_exists('jankx_placeholder_image')) {
             $imageSize = array(150, 150);
         }
         $siteName = urlencode(get_bloginfo('name'));
-
         return call_user_func_array('sprintf', apply_filters(
             'jankx_placeholder_image_args',
             array(
@@ -136,7 +135,7 @@ if (!function_exists('jankx_placeholder_image')) {
                 implode('/', array_values($imageSize)),
                 '4a90e2',
                 40,
-                $siteName
+                urldecode($siteName)
             )
         ));
     }
