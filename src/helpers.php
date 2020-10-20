@@ -77,7 +77,7 @@ if (!function_exists('jankx_generate_html_attributes')) {
 if (!function_exists('jankx_get_wp_image_sizes')) {
     function jankx_get_wp_image_sizes($size)
     {
-        if (in_array($size, array( 'thumbnail', 'medium', 'large' ))) {
+        if (in_array($size, array( 'thumbnail', 'medium', 'large', 'medium_large' ))) {
             return array(
                 'width'  => get_option($size . '_size_w'),
                 'height' => get_option($size . '_size_h'),
