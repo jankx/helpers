@@ -67,7 +67,7 @@ if (!function_exists('jankx_generate_html_attributes')) {
             $attributesStr .= sprintf(
                 '%s="%s" ',
                 $attribute,
-                is_array($value) ? implode(' ', $value) : $value
+                esc_attr(is_array($value) ? implode(' ', $value) : $value)
             );
         }
         return rtrim($attributesStr);
