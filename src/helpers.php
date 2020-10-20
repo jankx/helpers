@@ -121,12 +121,14 @@ if (!function_exists('jankx_get_image_numeric_size')) {
 if (!function_exists('jankx_placeholder_image')) {
     function jankx_placeholder_image($imageSize, $placeholder = '')
     {
+        if (in_array($imageSize, array('medium_large'))) {
+            $imageSize = 'medium';
+        }
         $imageSize = jankx_get_image_numeric_size($imageSize);
-        if (empty($imageSize) && in_array($imageSize, array('medium_large'))) {
-            $imageSize = jankx_get_image_numeric_size('medium');
-        } else {
+        if (empty($imageSize)) {
             $imageSize = array(150, 150);
         }
+
         $siteName = urlencode(get_bloginfo('name'));
         return call_user_func_array('sprintf', apply_filters(
             'jankx_placeholder_image_args',
