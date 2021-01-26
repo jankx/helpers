@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "phpseclib/phpseclib": "~3.0"
+    },
     "autoload": {
         "files": [
             "./loader.php"
