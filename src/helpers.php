@@ -194,3 +194,18 @@ if (!function_exists('wp_get_cookie')) {
         return $_COOKIE[$cookie_name];
     }
 }
+
+if (!function_exists('array_element_in_array')) {
+    function array_element_in_array($elements, $arr)
+    {
+        if (!is_array($elements)) {
+            $elements = array($elements);
+        }
+        foreach ($elements as $element) {
+            if (in_array($element, $arr)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
