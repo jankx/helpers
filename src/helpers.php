@@ -195,8 +195,8 @@ if (!function_exists('wp_get_cookie')) {
     }
 }
 
-if (!function_exists('array_element_in_array')) {
-    function array_element_in_array($elements, $arr)
+if (!function_exists('array_elements_in_array')) {
+    function array_elements_in_array($elements, $arr)
     {
         if (!is_array($elements)) {
             $elements = array($elements);
