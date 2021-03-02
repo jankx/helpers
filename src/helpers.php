@@ -209,3 +209,20 @@ if (!function_exists('array_elements_in_array')) {
         return false;
     }
 }
+
+if (!function_exists('wp_is_request'))
+{
+    function wp_is_request($type)
+    {
+        switch ($type) {
+            case 'admin':
+                return is_admin();
+            case 'ajax':
+                return defined('DOING_AJAX');
+            case 'cron':
+                return defined('DOING_CRON');
+            case 'frontend':
+                return ( ! is_admin() || defined('DOING_AJAX') ) && ! defined('DOING_CRON');
+        }
+    }
+}
