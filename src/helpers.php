@@ -226,3 +226,23 @@ if (!function_exists('wp_is_request'))
         }
     }
 }
+
+function wp_get_client_ip_address()
+{
+    $ip_headers = apply_filters('wp_get_client_ip_address', array(
+        'HTTP_CF_IPCOUNTRY',
+        'HTTP_CLIENT_IP',
+        'HTTP_X_FORWARDED_FOR',
+        'HTTP_X_FORWARDED',
+        'HTTP_FORWARDED_FOR',
+        'HTTP_FORWARDED',
+        'REMOTE_ADDR'
+    ));
+
+    foreach ($ip_headers as $ip_header) {
+        if (!empty($_SERVER[$ip_header])) {
+            return $_SERVER[$ip_header];
+        }
+    }
+    return '127.0.0.1';
+}
