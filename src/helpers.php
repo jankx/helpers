@@ -246,10 +246,3 @@ function wp_get_client_ip_address()
     }
     return '127.0.0.1';
 }
-
-if (!function_exists('jankx_parse_form_data')) {
-    function jankx_parse_form_data($stream, $boundary = null) {
-        $parser = new \Jankx\Helpers\FormDataParser();
-        return $parser->parse($stream, $boundary);
-    }
-}
