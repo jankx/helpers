@@ -12,6 +12,9 @@
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
+        "psr-4": {
+            "Jankx\\Helpers\\": "src/Helpers"
+        },
         "files": [
             "./loader.php"
         ]
