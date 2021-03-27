@@ -246,3 +246,9 @@ function wp_get_client_ip_address()
     }
     return '127.0.0.1';
 }
+
+if ( ! function_exists('wp_request_is_xhr') ) {
+    function wp_request_is_xhr() {
+        return array_get($_SERVER, 'HTTP_X_REQUESTED_WITH', false) === 'XMLHttpRequest'
+    }
+}
