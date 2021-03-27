@@ -249,6 +249,6 @@ function wp_get_client_ip_address()
 
 if ( ! function_exists('wp_request_is_xhr') ) {
     function wp_request_is_xhr() {
-        return array_get($_SERVER, 'HTTP_X_REQUESTED_WITH', false) === 'XMLHttpRequest'
+        return array_get($_SERVER, 'HTTP_X_REQUESTED_WITH', false) === 'XMLHttpRequest';
     }
 }
