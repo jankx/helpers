@@ -36,7 +36,16 @@ if (!function_exists('jankx_get_device_detector')) {
 if (!function_exists('jankx_is_mobile')) {
     function jankx_is_mobile()
     {
-        return jankx_get_device_detector()->isMobile();
+        $detector = jankx_get_device_detector();
+        $pre = apply_filters('jankx/device/is_mobile/pre', null, $detector);
+        if (!is_null($pre)) {
+            return $pre;
+        }
+
+        return apply_filters(
+            'jankx/device/is_mobile',
+            $detector->isMobile()
+        );
     }
 }
 
