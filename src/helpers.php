@@ -52,15 +52,9 @@ if (!function_exists('jankx_is_mobile')) {
 if (!function_exists('jankx_is_mobile_template')) {
     function jankx_is_mobile_template()
     {
-        if (isset($_COOKIE['view'])) {
-            $isMobile = array_get($_COOKIE, 'view', 'desktop') === 'mobile';
-        } else {
-            $isMobile = jankx_is_mobile();
-        }
-
         return apply_filters(
             'jankx_is_mobile_template',
-            $isMobile
+            jankx_is_mobile()
         );
     }
 }
