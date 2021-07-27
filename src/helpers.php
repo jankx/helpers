@@ -49,11 +49,11 @@ if (!function_exists('jankx_is_mobile')) {
     }
 }
 
-if (!function_exists('jankx_is_mobile_template')) {
+if (!function_exists('jankx/device/is_mobile/template')) {
     function jankx_is_mobile_template()
     {
         return apply_filters(
-            'jankx_is_mobile_template',
+            'jankx/device/is_mobile/template',
             jankx_is_mobile()
         );
     }
