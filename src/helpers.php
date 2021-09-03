@@ -52,10 +52,14 @@ if (!function_exists('jankx_is_mobile')) {
 if (!function_exists('jankx/device/is_mobile/template')) {
     function jankx_is_mobile_template()
     {
-        return apply_filters(
+        $pre = apply_filters(
             'jankx/device/is_mobile/template',
-            jankx_is_mobile()
+            null
         );
+        if (!is_null($pre)) {
+            return boolval($pre);
+        }
+        return jankx_is_mobile();
     }
 }
 
