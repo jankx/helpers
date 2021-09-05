@@ -271,3 +271,10 @@ if (!function_exists('jankx_get_path_url')) {
         return str_replace($abspath, site_url('/'), $path);
     }
 }
+
+if (!function_exists('jankx_trim_is_not_number')) {
+    function jankx_trim_is_not_number($str)
+    {
+        return preg_replace('/[^\d]/', '', $str);
+    }
+}
