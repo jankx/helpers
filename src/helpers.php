@@ -49,6 +49,22 @@ if (!function_exists('jankx_is_mobile')) {
     }
 }
 
+if (!function_exists('jankx_is_tablet')) {
+    function jankx_is_tablet()
+    {
+        $detector = jankx_get_device_detector();
+        $pre = apply_filters('jankx/device/is_tablet/pre', null, $detector);
+        if (!is_null($pre)) {
+            return $pre;
+        }
+
+        return apply_filters(
+            'jankx/device/is_tablet',
+            $detector->isTablet()
+        );
+    }
+}
+
 if (!function_exists('jankx/device/is_mobile/template')) {
     function jankx_is_mobile_template()
     {
