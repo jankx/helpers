@@ -194,17 +194,18 @@ if (!function_exists('jankx_template_has_footer')) {
 if (!function_exists('wp_set_cookie')) {
     function wp_set_cookie($cookie_name, $cookie_value = false, $secure = '')
     {
-        $expiration = time() + apply_filters('wp_cookie_expiration', 14 * DAY_IN_SECONDS, $user_id, $remember);
+        $cookie_lifetime = apply_filters('auth_cookie_expiration', 14 * DAY_IN_SECONDS );
+        $expired_at = time() + $cookie_lifetime;
 
         if ('' === $secure) {
             $secure = is_ssl();
         }
         $secure = apply_filters('secure_wp_cookie', $secure, $cookie_name, $cookie_value);
 
-        do_action('set_wp_cookie', $cookie_name, $expire, $expiration, $cookie_value);
+        do_action('set_wp_cookie', $cookie_name, $expired_at, $cookie_value);
 
-        setcookie($cookie_name, $cookie_value, $expire, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
-        setcookie($cookie_name, $cookie_value, $expire, ADMIN_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
+        setcookie($cookie_name, $cookie_value, $expired_at, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
+        setcookie($cookie_name, $cookie_value, $expired_at, ADMIN_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
     }
 }
 
