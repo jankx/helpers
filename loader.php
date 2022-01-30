@@ -7,7 +7,7 @@
  */
 
 
-if (!function_exists('jankx/device/is_mobile/template')) {
+if (!defined('JANKX_HELPER_LOADED')) {
     if (!class_exists('Mobile_Detect')) {
         require_once dirname(__FILE__) . '/src/Mobile_Detect.php';
     }

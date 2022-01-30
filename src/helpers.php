@@ -1,4 +1,6 @@
 <?php
+define('JANKX_HELPER_LOADED', true);
+
 if (!function_exists('array_get')) {
     function array_get($array, $key, $defaultValue = false)
     {
