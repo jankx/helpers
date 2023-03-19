@@ -1,5 +1,6 @@
 {
     "name": "jankx/helpers",
+    "version": "1.0.1",
     "description": "The helpers for Jankx Framework",
     "type": "library",
     "license": "MIT",
