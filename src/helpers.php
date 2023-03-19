@@ -81,18 +81,38 @@ if (!function_exists('jankx/device/is_mobile/template')) {
     }
 }
 
+if (!function_exists('jankx_convert_array_to_string')) {
+    function jankx_convert_array_to_string($items, $sep = ' ')
+    {
+        $str = '';
+
+        if (!is_array($items)) {
+            $str .= $items;
+        } else {
+            foreach ($items as $index => $item) {
+                $str .= jankx_convert_array_to_string($item, $sep);
+                if ($index < (count($items) - 1)) {
+                    $str .= $sep;
+                }
+            }
+        }
+        return $str;
+    }
+}
+
 if (!function_exists('jankx_generate_html_attributes')) {
     function jankx_generate_html_attributes($attributes)
     {
         if (!is_array($attributes)) {
             return '';
         }
+
         $attributesStr = '';
         foreach ($attributes as $attribute => $value) {
             $attributesStr .= sprintf(
                 '%s="%s" ',
                 $attribute,
-                esc_attr(is_array($value) ? implode(' ', $value) : $value)
+                esc_attr(jankx_convert_array_to_string($value, ' '))
             );
         }
         return rtrim($attributesStr);
@@ -196,7 +216,7 @@ if (!function_exists('jankx_template_has_footer')) {
 if (!function_exists('wp_set_cookie')) {
     function wp_set_cookie($cookie_name, $cookie_value = false, $secure = '')
     {
-        $cookie_lifetime = apply_filters('auth_cookie_expiration', 14 * DAY_IN_SECONDS );
+        $cookie_lifetime = apply_filters('auth_cookie_expiration', 14 * DAY_IN_SECONDS);
         $expired_at = time() + $cookie_lifetime;
 
         if ('' === $secure) {
