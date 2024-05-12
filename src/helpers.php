@@ -1,4 +1,5 @@
 <?php
+
 define('JANKX_HELPER_LOADED', true);
 
 if (!function_exists('array_get')) {
@@ -315,5 +316,16 @@ if (!function_exists('jankx_trim_is_not_number')) {
     function jankx_trim_is_not_number($str)
     {
         return preg_replace('/[^\d]/', '', $str);
+    }
+}
+
+
+if (!function_exists('jankx_frontend_title')) {
+    function jankx_frontend_title($sep = '&raquo;', $seplocation = '')
+    {
+        if (function_exists('jankx_is_support_block_template') && jankx_is_support_block_template()) {
+            return wp_get_document_title();
+        }
+        return wp_title($sep, false, $seplocation);
     }
 }
