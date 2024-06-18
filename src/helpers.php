@@ -316,3 +316,13 @@ if (!function_exists('jankx_frontend_title')) {
         return wp_title($sep, false, $seplocation);
     }
 }
+
+if (!function_exists('jankx_is_support_block_template')) {
+    function jankx_is_support_block_template()
+    {
+        return apply_filters(
+            'jankx/gutenberg/enabled',
+            get_theme_support('block-templates') && (!empty($_wp_current_template_content) || !is_single())
+        );
+    }
+}
