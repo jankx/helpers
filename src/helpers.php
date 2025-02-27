@@ -255,7 +255,7 @@ if (!function_exists('wp_is_request')) {
             case 'cron':
                 return defined('DOING_CRON');
             case 'frontend':
-                return ( ! is_admin() && !defined('WP_CLI') && defined('DOING_AJAX') ) && ! defined('DOING_CRON');
+                return ( ! is_admin() && !defined('WP_CLI') && ! defined('DOING_AJAX') ) && ! defined('DOING_CRON');
         }
     }
 }
