@@ -1,4 +1,7 @@
 <?php
+if (!defined('ABSPATH')) {
+    exit('Cheating huh?');
+}
 
 /**
  * Mobile Detect Library
