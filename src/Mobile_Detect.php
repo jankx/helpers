@@ -1253,7 +1253,10 @@ class Mobile_Detect
      */
     public function match($regex, $userAgent = null)
     {
-        $match = (bool) preg_match(sprintf('#%s#is', $regex), (false === empty($userAgent) ? $userAgent : $this->userAgent), $matches);
+        if (strpos($regex, '/') !== false) {
+            $regex = str_replace('/', '\/', $regex);
+        }
+        $match = preg_match(sprintf('/%s/', $regex), (false === empty($userAgent) ? $userAgent : $this->userAgent), $matches);
         // If positive match is found, store the results for debug.
         if ($match) {
             $this->matchingRegex = $regex;
